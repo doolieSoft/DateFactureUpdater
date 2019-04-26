@@ -28,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.DirectoryChooser;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -64,7 +65,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private CheckBox chekboxConserverDossierDeSortie;
-    
+
     @FXML
     private CheckBox chekboxAjouterDateDuJour;
 
@@ -74,6 +75,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button buttonOuvrirDossierDeSortie;
 
+    @FXML
+    private Button buttonSelectionnerDossierDeSortie;
+
+    @FXML
+    private Button buttonSelectionnerDossierDOrigine;
+
     String sDossierDOrigine;
     String sDossierDeSortie;
 
@@ -82,11 +89,29 @@ public class FXMLDocumentController implements Initializable {
         Runtime rt = Runtime.getRuntime();
         Process pr = rt.exec("explorer " + dossierDeSortie.getText());
     }
-    
+
+    @FXML
+    private void handleButtonSelectionnerDossierDeSortie(ActionEvent event) throws IOException {
+        final DirectoryChooser dialog = new DirectoryChooser();
+        final File directory = dialog.showDialog(buttonSelectionnerDossierDeSortie.getScene().getWindow());
+        if (directory != null) {
+            dossierDeSortie.setText(directory.getAbsolutePath());
+        }
+    }
+
+    @FXML
+    private void handleButtonSelectionDossierDOrigine(ActionEvent event) throws IOException {
+        final DirectoryChooser dialog = new DirectoryChooser();
+        final File directory = dialog.showDialog(buttonSelectionnerDossierDOrigine.getScene().getWindow());
+        if (directory != null) {
+            dossierDOrigine.setText(directory.getAbsolutePath());
+        }
+    }
+
     @FXML
     private void handleButtonCopieDesFichiers(ActionEvent event) throws IOException {
-        
-        if(listeFichiersATraiter.getText().equals("")) {
+
+        if (listeFichiersATraiter.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Liste des fichiers à copier");
             alert.setHeaderText("La liste des fichiers à copier est vide. Il n'y a rien à copier !");
@@ -94,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
+
         String[] listeFichiers = listeFichiersATraiter.getText().split("\n");
 
         sDossierDOrigine = dossierDOrigine.getText();
@@ -148,8 +173,8 @@ public class FXMLDocumentController implements Initializable {
             alert.showAndWait();
             return;
         }
-        
-        if(!nouvelleDateFacture.getText().matches("[0-9]{8}")) {
+
+        if (!nouvelleDateFacture.getText().matches("[0-9]{8}")) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Nouvelle date de la facture...");
             alert.setHeaderText("Veuillez entrer une date valide !");
@@ -189,8 +214,6 @@ public class FXMLDocumentController implements Initializable {
             nouvelleDateFacture.setDisable(false);
         }
     }
-    
-    
 
     @FXML
     private void handleCheckBoxConserverCheminDOrigine(ActionEvent event) throws IOException {
@@ -200,7 +223,7 @@ public class FXMLDocumentController implements Initializable {
             dossierDOrigine.setDisable(false);
         }
     }
-    
+
     @FXML
     private void handleCheckBoxConserverDossierDeSortie(ActionEvent event) throws IOException {
         if (chekboxConserverDossierDeSortie.isSelected()) {

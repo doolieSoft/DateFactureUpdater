@@ -23,9 +23,9 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane id="AnchorPane">
+      <AnchorPane id="AnchorPane" prefWidth="1200.0">
           <children>
-            <SplitPane dividerPositions="0.41307371349095967" style="-fx-background-color: #4985c1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.2" style="-fx-background-color: #4985c1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane>
                      <children>
@@ -36,21 +36,35 @@
                      <children>
                         <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <TextField fx:id="dossierDOrigine" promptText="Dossier contenant les fichiers">
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="dossierDOrigine" prefHeight="25.0" prefWidth="550.0" promptText="Dossier d'origine contenant les fichiers">
                               </TextField>
+                                    <Button fx:id="buttonSelectionnerDossierDOrigine" mnemonicParsing="false" onAction="#handleButtonSelectionDossierDOrigine" text="Sélectionner le dossier..." />
+                                 </children>
+                              </HBox>
                               <CheckBox fx:id="chekboxConserverCheminDOrigine" mnemonicParsing="false" onAction="#handleCheckBoxConserverCheminDOrigine" text="Conserver le dossier d'origine" />
-                              <TextField fx:id="dossierDeSortie" promptText="Dossier de sortie" />
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="dossierDeSortie" prefWidth="550.0" promptText="Dossier de sortie" />
+                                    <Button fx:id="buttonSelectionnerDossierDeSortie" mnemonicParsing="false" onAction="#handleButtonSelectionnerDossierDeSortie" text="Sélectionner le dossier..." />
+                                 </children>
+                              </HBox>
                               <HBox spacing="10.0">
                                  <children>
                                     <CheckBox fx:id="chekboxConserverDossierDeSortie" mnemonicParsing="false" onAction="#handleCheckBoxConserverDossierDeSortie" text="Conserver le dossier de sortie" />
                                     <Button fx:id="buttonOuvrirDossierDeSortie" mnemonicParsing="false" onAction="#handleButtonOuvrirDossierDeSortie" text="Ouvrir le dossier de sortie" />
                                  </children>
                               </HBox>
-                              <TextField fx:id="nouvelleDateFacture" promptText="Nouvelle date de la facture" />
+                              <HBox>
+                                 <children>
+                                    <TextField fx:id="nouvelleDateFacture" prefHeight="25.0" prefWidth="550.0" promptText="Nouvelle date de la facture" />
+                                 </children>
+                              </HBox>
                               <CheckBox fx:id="chekboxNouvelleDateFacture" mnemonicParsing="false" onAction="#handleCheckBoxConserverNouvelleDateFacture" text="Conserver la date" />
-                              <Button fx:id="buttonCopieDesFichiers" mnemonicParsing="false" onAction="#handleButtonCopieDesFichiers" text="Copier les fichiers à partir du dossier d'origine" />
-                              <Button fx:id="buttonMiseAJourDatesFactures" mnemonicParsing="false" onAction="#handleButtonMiseAJourDatesFactures" text="Mettre à jour la date des factures" />
-                              <Button fx:id="buttonEnregistrerParametre" mnemonicParsing="false" onAction="#handleButtonEnregistrerParametre" text="Enregistrer les paramètres" />
+                              <Button fx:id="buttonCopieDesFichiers" mnemonicParsing="false" onAction="#handleButtonCopieDesFichiers" prefWidth="550.0" text="Copier les fichiers à partir du dossier d'origine" />
+                              <Button fx:id="buttonMiseAJourDatesFactures" mnemonicParsing="false" onAction="#handleButtonMiseAJourDatesFactures" prefWidth="550.0" text="Mettre à jour la date des factures" />
+                              <Button fx:id="buttonEnregistrerParametre" mnemonicParsing="false" onAction="#handleButtonEnregistrerParametre" prefWidth="550.0" text="Enregistrer les paramètres" />
                            </children>
                         </VBox>
                      </children>
