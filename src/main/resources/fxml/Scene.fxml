@@ -58,7 +58,7 @@
                               </HBox>
                               <HBox>
                                  <children>
-                                    <TextField fx:id="nouvelleDateFacture" prefHeight="25.0" prefWidth="550.0" promptText="Nouvelle date de la facture" />
+                                    <TextField fx:id="nouvelleDateFacture" prefHeight="25.0" prefWidth="550.0" promptText="Nouvelle date de la facture (AAAAMMJJ)" />
                                  </children>
                               </HBox>
                               <CheckBox fx:id="chekboxNouvelleDateFacture" mnemonicParsing="false" onAction="#handleCheckBoxConserverNouvelleDateFacture" text="Conserver la date" />
